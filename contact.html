@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yummy</title>
+    <!-- <link rel="icon" type="image/png" href="./images/logo.png"> -->
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+        <div class="sidebar d-flex position-fixed top-0  bottom-0 z-3">
+            <div class="hidden-content ps-4 py-4 d-flex flex-column justify-content-between text-white">
+                <ul class=" list-unstyled">
+                    <li class=" pt-3 nav-item search"><a href="#" class=" text-decoration-none text-white">Search</a></li>
+                    <li class=" pt-3 nav-item category"><a href="#" class=" text-decoration-none text-white">Categories</a></li>
+                    <li class=" pt-3 nav-item area"><a href="#" class=" text-decoration-none text-white">Area</a></li>
+                    <li class=" pt-3 nav-item ingrad"><a href="#" class=" text-decoration-none text-white">Ingrediants</a></li>
+                    <li class=" pt-3 nav-item contact"><a href="#" class=" text-decoration-none text-white">Contact Us</a></li>
+                </ul>
+                <footer>
+                    <div class="icons">
+                        <i class="fa-brands fa-facebook"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+                    <p>Copyright Â© 2019 All Rights Reserved.</p>
+                </footer>
+            </div>
+            <div class="show-content d-flex flex-column justify-content-between align-items-center py-5">
+                <img src="./images/logo.png" alt="logo" class="w-75">
+                <i id="toggle-icon" class="fa-solid fa-bars fs-2"></i>
+                <footer class="d-flex flex-column">
+                    <i class="fa-solid fa-globe fs-5"></i>
+                    <i class="fa-solid fa-share-nodes fs-5 pt-2"></i>
+                </footer>
+            </div>
+        </div>
+        <div class="container py-5">
+            <div class="row g-3 pt-5  px-5">
+                <div class="forminputs d-flex justify-content-center flex-md-row flex-column pt-5  px-5">
+                    <div class="left col-md-6 col-12 ">
+                        <input id="nameInput" type="text" placeholder="Enter Your Name" class="form-control p-2 mt-5">
+                        <small class="text-danger d-none" id="nameError">Name must be at least 3 letters</small>
+                        <input id="phoneInput" type="text" placeholder="Enter Your Phone" class="form-control p-2 mt-3">
+                        <small class=" text-danger d-none" id="phoneError">Invaild Phone Number</small>
+                        <input id="passInput" type="password" placeholder="Enter Your Password" class="form-control p-2 mt-3">
+                        <small class="text-danger d-none" id="passError">Password Must be min 8 characters and at least one special character and letter</small>
+                    </div>
+                    <div class="right col-md-6 col-12 ">
+                        <input id="emailInput" type="email" placeholder="Enter Your Email" class="form-control p-2 mt-5">
+                        <small class="text-danger d-none" id="emailError">Invalid email (e.g example@ss.com)</small>
+                        <input id="ageInput" type="number" placeholder="Enter Your Age" class="form-control p-2 mt-3">
+                        <small class=" text-danger d-none"id="ageError">Invalid Age</small>
+                        <input id="repassInput" type="password" placeholder="Repassword" class="form-control p-2 mt-3">
+                        <small class="text-danger d-none" id="repassError">Passwords do not match !</small>
+                    </div>
+                </div>
+                <button class="btn bg-warning mt-5 submit mx-auto">Submit</button>
+            </div>
+        </div>
+<i id="spinner" class="fa-solid fa-spinner d-none position-absolute top-50 start-50 translate-middle-x translate-middle-y text-white fs-1"></i>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

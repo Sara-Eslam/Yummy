@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yummy</title>
+    <!-- <link rel="icon" type="image/png" href="./images/logo.png"> -->
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="sidebar d-flex position-fixed top-0  bottom-0 z-3">
+        <div class="hidden-content ps-4 py-4 d-flex flex-column justify-content-between text-white">
+        <ul class=" list-unstyled">
+            <li class=" pt-3 nav-item search"><a href="#" class=" text-decoration-none text-white">Search</a></li>
+            <li class=" pt-3 nav-item category"><a href="#" class=" text-decoration-none text-white">Categories</a></li>
+            <li class=" pt-3 nav-item area"><a href="#" class=" text-decoration-none text-white">Area</a></li>
+            <li class=" pt-3 nav-item ingrad"><a href="#" class=" text-decoration-none text-white">Ingrediants</a></li>
+            <li class=" pt-3 nav-item contact"><a href="#" class=" text-decoration-none text-white">Contact Us</a></li>
+        </ul>
+        <footer>
+            <div class="icons">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-solid fa-globe"></i>
+        </div>
+        <p>Copyright Â© 2019 All Rights Reserved.</p>
+        </footer>
+        </div>
+        <div class="show-content d-flex flex-column justify-content-between align-items-center py-5">
+            <img src="./images/logo.png" alt="logo" class="w-75">
+            <i id="toggle-icon" class="fa-solid fa-bars fs-2"></i>
+            <footer class="d-flex flex-column">
+                <i class="fa-solid fa-globe fs-5"></i>
+                <i class="fa-solid fa-share-nodes fs-5 pt-2"></i>
+            </footer>
+        </div>
+    </div>
+    <i id="spinner" class="fa-solid fa-spinner d-none position-absolute top-50 start-50 translate-middle-x translate-middle-y text-white fs-1"></i>
+<div class=" container pt-5">
+    <div class="row main-meals g-4">
+    </div>
+
+</div>
+
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>
