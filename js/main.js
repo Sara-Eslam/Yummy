@@ -33,9 +33,11 @@ async function getInitialMeals() {
     }
     document.querySelector(".main-meals").innerHTML = content;
 }
-if (window.location.href.includes("index.html")) {
+if (document.querySelector(".main-meals")) {
     getInitialMeals();
 }
+
+
 
 toggleIcon.addEventListener("click", function () {
 
