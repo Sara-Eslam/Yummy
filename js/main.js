@@ -18,7 +18,6 @@ async function getInitialMeals() {
     var initialMeals = await firstResponse.json();
     var meals = initialMeals.meals;
     spinner.classList.replace("d-block", "d-none");
-    console.log(initialMeals.meals);
     var content = '';
     for (let i = 0; i < meals.length; i++) {
         content += `
@@ -426,112 +425,111 @@ if (contactLink) {
     });
 }
 
-const nameRegex = /^[a-zA-Z ]{3,}$/;
-const phoneRegex = /^01[0-5][0-9]{8}$/;
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const passRegex = /^(?=.*[A-Za-z])(?=.*[^A-Za-z0-9]).{8,}$/;
-
+// --- Only run this code if we are on contact.html ---
+const submitBtn = document.getElementById("submitBtn");
 const nameInput = document.getElementById("nameInput");
 const emailInput = document.getElementById("emailInput");
 const phoneInput = document.getElementById("phoneInput");
 const ageInput = document.getElementById("ageInput");
 const passInput = document.getElementById("passInput");
 const repassInput = document.getElementById("repassInput");
-const submitBtn = document.getElementById("submitBtn");
 
+if (submitBtn && nameInput && emailInput && phoneInput && ageInput && passInput && repassInput) {
 
-const nameError = document.getElementById("nameError");
-const emailError = document.getElementById("emailError");
-const phoneError = document.getElementById("phoneError");
-const ageError = document.getElementById("ageError");
-const passError = document.getElementById("passError");
-const repassError = document.getElementById("repassError");
+    // --- Regex rules ---
+    const nameRegex = /^[a-zA-Z ]{3,}$/;
+    const phoneRegex = /^01[0-5][0-9]{8}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passRegex = /^(?=.*[A-Za-z])(?=.*[^A-Za-z0-9]).{8,}$/;
 
-const inputs = document.querySelectorAll("input");
-if (submitBtn) {
+    // --- Error message elements ---
+    const nameError = document.getElementById("nameError");
+    const emailError = document.getElementById("emailError");
+    const phoneError = document.getElementById("phoneError");
+    const ageError = document.getElementById("ageError");
+    const passError = document.getElementById("passError");
+    const repassError = document.getElementById("repassError");
+    const inputs = [nameInput, phoneInput, emailInput, ageInput, passInput, repassInput];
     submitBtn.disabled = true;
-}
-
-function checkInput(input) {
-
-    if (input === nameInput) {
-        if (!nameRegex.test(input.value)) {
-            nameError.classList.replace("d-none", "d-block");
-            return false;
+    function checkInput(input) {
+        if (input === nameInput) {
+            if (!nameRegex.test(input.value)) {
+                nameError.classList.replace("d-none","d-block");
+                return false;
+            } else {
+                nameError.classList.replace("d-block","d-none");
+                return true;
+            }
         }
-        nameError.classList.replace("d-block", "d-none");
-        return true;
-    }
-
-    if (input === phoneInput) {
-        if (!phoneRegex.test(input.value)) {
-            phoneError.classList.replace("d-none", "d-block");
-            return false;
+        if (input === phoneInput) {
+            if (!phoneRegex.test(input.value)) {
+                phoneError.classList.replace("d-none","d-block");
+                return false;
+            } else {
+                phoneError.classList.replace("d-block","d-none");
+                return true;
+            }
         }
-        phoneError.classList.replace("d-block", "d-none");
-        return true;
-    }
 
-    if (input === emailInput) {
-        if (!emailRegex.test(input.value)) {
-            emailError.classList.replace("d-none", "d-block");
-            return false;
+        if (input === emailInput) {
+            if (!emailRegex.test(input.value)) {
+                emailError.classList.replace("d-none","d-block");
+                return false;
+            } else {
+                emailError.classList.replace("d-block","d-none");
+                return true;
+            }
         }
-        emailError.classList.replace("d-block", "d-none");
-        return true;
-    }
 
-    if (input === passInput) {
-        if (!passRegex.test(input.value)) {
-            passError.classList.replace("d-none", "d-block");
-            return false;
+        if (input === passInput) {
+            if (!passRegex.test(input.value)) {
+                passError.classList.replace("d-none","d-block");
+                return false;
+            } else {
+                passError.classList.replace("d-block","d-none");
+                return true;
+            }
         }
-        passError.classList.replace("d-block", "d-none");
-        return true;
-    }
 
-    if (input === ageInput) {
-        if (input.value < 10 || input.value > 100) {
-            ageError.classList.replace("d-none", "d-block");
-            return false;
+        if (input === ageInput) {
+            if (input.value < 10 || input.value > 100) {
+                ageError.classList.replace("d-none","d-block");
+                return false;
+            } else {
+                ageError.classList.replace("d-block","d-none");
+                return true;
+            }
         }
-        ageError.classList.replace("d-block", "d-none");
-        return true;
-    }
 
-    if (input === repassInput) {
-        if (input.value !== passInput.value || input.value === "") {
-            repassError.classList.replace("d-none", "d-block");
-            return false;
+        if (input === repassInput) {
+            if (input.value !== passInput.value || input.value === "") {
+                repassError.classList.replace("d-none","d-block");
+                return false;
+            } else {
+                repassError.classList.replace("d-block","d-none");
+                return true;
+            }
         }
-        repassError.classList.replace("d-block", "d-none");
-        return true;
+
+        return false;
     }
-
-    return false;
-}
-
-function checkForm() {
-    let isValid =
-        nameRegex.test(nameInput.value) &&
-        phoneRegex.test(phoneInput.value) &&
-        emailRegex.test(emailInput.value) &&
-        passRegex.test(passInput.value) &&
-        ageInput.value >= 10 &&
-        ageInput.value <= 100 &&
-        repassInput.value === passInput.value;
-    submitBtn.disabled = !isValid;
-}
-
-
-if (submitBtn && nameInput) {
-
-    submitBtn.disabled = true;
+    function checkForm() {
+        const isValid =
+            nameRegex.test(nameInput.value) &&
+            phoneRegex.test(phoneInput.value) &&
+            emailRegex.test(emailInput.value) &&
+            passRegex.test(passInput.value) &&
+            ageInput.value >= 10 &&
+            ageInput.value <= 100 &&
+            repassInput.value === passInput.value;
+            submitBtn.disabled = !isValid;
+    }
     inputs.forEach(input => {
-        input.addEventListener("keyup", function () {
-            checkInput(this);
+        input.addEventListener("keyup", () => {
+            checkInput(input);
             checkForm();
         });
     });
-
+    checkForm();
 }
+
