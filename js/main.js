@@ -33,7 +33,8 @@ async function getInitialMeals() {
     }
     document.querySelector(".main-meals").innerHTML = content;
 }
-if (document.querySelector(".main-meals")) {
+const path = window.location.pathname;
+if (path.endsWith("/") || path.endsWith("/index.html")) {
     getInitialMeals();
 }
 
